@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import MoodChecker from "./MoodChecker";
+import WellnessActivities from "./WellnessActivities";
+import ResourceNavigator from "./ResourceNavigator";
 
 function App() {
   const [question, setQuestion] = useState("");
@@ -23,6 +26,8 @@ function App() {
   return (
     <div style={{ padding: "20px" }}>
       <h1>Kai - AI Agent</h1>
+
+      {/* AI Chat */}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -32,10 +37,18 @@ function App() {
         />
         <button type="submit">Ask</button>
       </form>
+
       <div style={{ marginTop: "20px" }}>
         <strong>AI Answer:</strong>
         <p>{answer}</p>
       </div>
+
+      {/* Mood Checker */}
+      <MoodChecker />
+      {/* Wellness Activities */}
+      <WellnessActivities/>
+      {/* Resource Navigator */}
+      <ResourceNavigator />
     </div>
   );
 }

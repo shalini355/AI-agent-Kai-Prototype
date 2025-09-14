@@ -1,26 +1,59 @@
-const express = require("express");
-const dotenv = require("dotenv");
-const cors = require("cors");
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+// location: kai-backend/server.js
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import OpenAI from "openai";
 
 dotenv.config();
+
 const app = express();
-app.use(express.json());
+const PORT = 5000;
+
 app.use(cors());
+app.use(express.json());
 
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY, // ensure .env me OPENAI_API_KEY set ho
+});
 
-app.post("/ask", async (req, res) => {
+// Mood + AI endpoint
+app.post("/ai-mood", async (req, res) => {
+  const { message } = req.body;
+
+  if (!message) return res.json({ mood: "neutral", reply: "Please send some text!" });
+
+  const msg = message.toLowerCase();
+
+  const happyKeywords = ["happy", "good", "excited", "great", "joy"];
+  const sadKeywords = ["sad", "depressed", "unhappy", "bad", "down"];
+  const angryKeywords = ["angry", "frustrated", "mad", "upset"];
+
+  let mood = "neutral";
+
+  if (happyKeywords.some(word => msg.includes(word))) mood = "happy";
+  else if (sadKeywords.some(word => msg.includes(word))) mood = "sad";
+  else if (angryKeywords.some(word => msg.includes(word))) mood = "angry";
+
+  // AI Response
   try {
-    const { question } = req.body;
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-    const result = await model.generateContent(question);
+    const aiPrompt = `The user is feeling ${mood}. Respond in a friendly way to their message: "${message}"`;
+    
+    const aiRes = await openai.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages: [{ role: "user", content: aiPrompt }],
+      max_tokens: 150,
+    });
 
-    res.json({ answer: result.response.text() });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: err.message });
+    const aiReply = aiRes.choices[0].message.content;
+
+    res.json({ mood, reply: aiReply });
+
+  } catch (error) {
+    console.error(error);
+    res.json({ mood, reply: "Sorry, I couldn't process your request." });
   }
 });
 
-app.listen(5000, () => console.log("🚀 Server running on http://localhost:5000"));
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
