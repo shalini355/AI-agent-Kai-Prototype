@@ -1,8 +1,0 @@
-[33m0bb4bd2[m[33m ([m[1;36mHEAD[m[33m, [m[1;31morigin/main[m[33m)[m HEAD@{0}: pull origin main --rebase (start): checkout 0bb4bd25b963b15f90080728bb1fccd691b3e129
-[33m3c6661c[m[33m ([m[1;32mmain[m[33m)[m HEAD@{1}: Branch: renamed refs/heads/main to refs/heads/main
-[33m3c6661c[m[33m ([m[1;32mmain[m[33m)[m HEAD@{3}: commit: Prototype rough Sketch
-[33m8e4fc42[m HEAD@{4}: commit: Added AI integration feature
-[33m1904555[m HEAD@{5}: Branch: renamed refs/heads/main to refs/heads/main
-[33m1904555[m HEAD@{7}: commit: Working AI
-[33mfb2eb76[m HEAD@{8}: Branch: renamed refs/heads/master to refs/heads/main
-[33mfb2eb76[m HEAD@{10}: commit (initial): Initial commit - Kai Prototype setup
