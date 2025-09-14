@@ -1,17 +1,26 @@
-const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
+const express = require("express");
+const dotenv = require("dotenv");
+const cors = require("cors");
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 
+dotenv.config();
 const app = express();
-const PORT = 5000;
-
+app.use(express.json());
 app.use(cors());
-app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-  res.send('Kai Backend Running');
+const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
+
+app.post("/ask", async (req, res) => {
+  try {
+    const { question } = req.body;
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const result = await model.generateContent(question);
+
+    res.json({ answer: result.response.text() });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+app.listen(5000, () => console.log("🚀 Server running on http://localhost:5000"));

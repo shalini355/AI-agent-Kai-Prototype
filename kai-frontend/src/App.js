@@ -1,31 +1,41 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 function App() {
-  const [input, setInput] = useState("");
-  const [chat, setChat] = useState([]);
+  const [question, setQuestion] = useState("");
+  const [answer, setAnswer] = useState("");
 
-  const sendMessage = () => {
-    if(input.trim() === "") return;
-    setChat([...chat, { sender: "user", text: input }]);
-    setChat(prev => [...prev, { sender: "bot", text: "AI Response Placeholder" }]);
-    setInput("");
+  async function askAI(q) {
+    const res = await fetch("http://localhost:5000/ask", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question: q }),
+    });
+
+    const data = await res.json();
+    setAnswer(data.answer);
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    askAI(question);
   };
 
   return (
     <div style={{ padding: "20px" }}>
-      <h1>Kai Chat</h1>
-      <div style={{ minHeight: "200px", border: "1px solid #ccc", padding: "10px" }}>
-        {chat.map((msg, i) => (
-          <p key={i}><b>{msg.sender}:</b> {msg.text}</p>
-        ))}
+      <h1>Kai - AI Agent</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={question}
+          onChange={(e) => setQuestion(e.target.value)}
+          placeholder="Ask me anything..."
+        />
+        <button type="submit">Ask</button>
+      </form>
+      <div style={{ marginTop: "20px" }}>
+        <strong>AI Answer:</strong>
+        <p>{answer}</p>
       </div>
-      <input 
-        type="text" 
-        value={input} 
-        onChange={e => setInput(e.target.value)}
-        placeholder="Type a message..."
-      />
-      <button onClick={sendMessage}>Send</button>
     </div>
   );
 }
