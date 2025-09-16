@@ -2,25 +2,33 @@ import React, { useState } from "react";
 import MoodChecker from "./MoodChecker";
 import WellnessActivities from "./WellnessActivities";
 import ResourceNavigator from "./ResourceNavigator";
+import "./App.css";
 
 function App() {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
 
   async function askAI(q) {
-    const res = await fetch("http://localhost:5000/ask", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ question: q }),
-    });
+    try {
+      const res = await fetch("http://localhost:5000/ai-mood", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: q }), // ✅ backend expects "message"
+      });
 
-    const data = await res.json();
-    setAnswer(data.answer);
+      const data = await res.json();
+      setAnswer(data.reply); // ✅ match backend key
+    } catch (err) {
+      console.error("Error fetching AI response:", err);
+      setAnswer("Something went wrong, please try again.");
+    }
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    askAI(question);
+    if (question.trim() !== "") {
+      askAI(question);
+    }
   };
 
   return (
@@ -46,7 +54,7 @@ function App() {
       {/* Mood Checker */}
       <MoodChecker />
       {/* Wellness Activities */}
-      <WellnessActivities/>
+      <WellnessActivities />
       {/* Resource Navigator */}
       <ResourceNavigator />
     </div>

@@ -1,0 +1,24 @@
+{
+  "name": "ai-agent-kai-prototype",
+  "version": "1.0.0",
+  "description": "**Kai** is an empathetic AI assistant designed to support mental wellness, track mood, and provide helpful resources in a friendly and confidential way. The project is built using **React** for the frontend and **Node.js + Express** for the backend.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shalini355/AI-agent-Kai-Prototype.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/shalini355/AI-agent-Kai-Prototype/issues"
+  },
+  "homepage": "https://github.com/shalini355/AI-agent-Kai-Prototype#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
