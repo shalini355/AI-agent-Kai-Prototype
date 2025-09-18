@@ -63,7 +63,7 @@ Use the chat to talk with Kai.
 Check your mood using the Mood Check-In feature.
 
 Explore guided wellness activities and resources.
-
+```
 Important Notes
 Add your Gemini API key in .env in the backend folder.
 
@@ -75,7 +75,6 @@ Contributing
 Fork the repo and create a new branch for your feature or bug fix.
 
 Submit a pull request with clear description of your changes.
-```
 
 License
 This project is open-source and free to use under the MIT License.
