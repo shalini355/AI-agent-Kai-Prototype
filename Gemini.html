@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Name</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Roboto:wght@400;700&display=swap');
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .navbar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            box-sizing: border-box;
+        }
+
+        .navbar-brand {
+            font-family: 'Architects Daughter', cursive;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar-links a,
+        .navbar-login a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 400;
+            padding: 8px 16px;
+            border-radius: 5px;
+            border: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .navbar-links a:hover {
+            border-color: #ffffff;
+        }
+        
+        .navbar-login a {
+            border: 1px solid #ffffff;
+        }
+
+        .navbar-login a:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .welcome-text {
+            font-family: 'Architects Daughter', cursive;
+            font-size: 80px;
+            margin: 0;
+        }
+
+        .slogan {
+            font-family: 'Architects Daughter', cursive;
+            font-size: 30px;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .get-started-button {
+            margin-top: 40px;
+            padding: 15px 40px;
+            font-size: 20px;
+            font-family: 'Architects Daughter', cursive;
+            border: 2px solid #ffffff;
+            background-color: transparent;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .get-started-button:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .navbar-links {
+                margin-top: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .navbar-login {
+                margin-top: 10px;
+            }
+
+            .welcome-text {
+                font-size: 50px;
+            }
+
+            .slogan {
+                font-size: 20px;
+            }
+
+            .get-started-button {
+                padding: 12px 30px;
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-brand">AI Name</div>
+        <div class="navbar-links">
+            <a href="#">Home</a>
+            <a href="#">Features</a>
+            <a href="#">Blog</a>
+        </div>
+        <div class="navbar-login">
+            <a href="#">Login</a>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <h1 class="welcome-text">Welcome</h1>
+        <p class="slogan">"Your Safe Space to Talk"</p>
+        <a href="#" class="get-started-button">Get Started</a>
+    </div>
+</body>
+</html>

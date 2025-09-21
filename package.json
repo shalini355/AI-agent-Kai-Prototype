@@ -4,6 +4,10 @@
   "description": "**Kai** is an empathetic AI assistant designed to support mental wellness, track mood, and provide helpful resources in a friendly and confidential way. The project is built using **React** for the frontend and **Node.js + Express** for the backend.",
   "main": "index.js",
   "scripts": {
+    "start": "concurrently \"npm run start --prefix kai-frontend\" \"npm run start --prefix kai-backend\"",
+    "start-frontend": "npm run start --prefix kai-frontend",
+    "start-backend": "npm run start --prefix kai-backend",
+    "install-all": "npm install --prefix kai-frontend && npm install --prefix kai-backend",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,6 +23,12 @@
   },
   "homepage": "https://github.com/shalini355/AI-agent-Kai-Prototype#readme",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.30.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
   }
 }

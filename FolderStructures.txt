@@ -1,0 +1,39 @@
+my-ai-app/
+│
+├── backend/                         # Express + Gemini API backend
+│   ├── server.js                    # Main server (handles API calls)
+│   ├── .env                         # Store GOOGLE_API_KEY safely
+│   ├── package.json                 # Backend dependencies
+│   └── node_modules/                # Installed backend packages
+│
+├── frontend/                        # React frontend
+│   ├── public/
+│   │   ├── index.html               # React entry HTML
+│   │   └── favicon.ico              # App icon
+│   │
+│   ├── src/
+│   │   ├── components/              # Reusable UI parts
+│   │   │   ├── MoodChecker.js
+│   │   │   ├── WellnessActivities.js
+│   │   │   ├── ResourceNavigator.js
+│   │   │   └── Navbar.js            # Navigation bar
+│   │
+│   │   ├── pages/                   # Page-level components
+│   │   │   ├── Home.js              # Landing page (before login/signup)
+│   │   │   ├── Signup.js            # Signup form
+│   │   │   ├── Login.js             # Login form
+│   │   │   └── Dashboard.js         # After login → AI chat + tools
+│   │
+│   │   ├── App.js                   # Main app file (handles routes)
+│   │   ├── App.css                  # Global styles
+│   │   ├── index.js                 # React entry point
+│   │   └── assets/                  # Images, icons, illustrations
+│   │       ├── bot.png              # Your AI bot image
+│   │       └── wellness-bg.jpg      # Background for landing page
+│   │
+│   ├── package.json                 # Frontend dependencies
+│   └── node_modules/                # Installed frontend packages
+│
+├── package.json                     # Root-level (optional for scripts)
+├── README.md                        # Project instructions
+└── .gitignore                       # Ignore node_modules, .env, etc.
